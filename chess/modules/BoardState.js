@@ -47,6 +47,21 @@ function BoardState(fen = "8/8/8/8/8/8/8/8 w - - 0 0") {
     return BoardState();
   }
   
+  let toMove = lastEntries[1];
+  let castlingRights = {
+    white: {
+      kingside: false,
+      queenside: false
+    },
+    black: {
+      kingside: false,
+      queenside: false
+    }
+  }
+  castlingRights["white"]["kingside"] = lastEntries[1].includes("K");
+  castlingRights["white"]["queenside"] = lastEntries[1].includes("Q");
+  castlingRights["black"]["kingside"] = lastEntries[1].includes("k");
+  castlingRights["black"]["queenside"] = lastEntries[1].includes("q");
 }
 
 export { BoardState };
